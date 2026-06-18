@@ -1,0 +1,17 @@
+# Authentication
+PermitRootLogin prohibit-password
+PasswordAuthentication no
+PubkeyAuthentication yes
+AuthorizedKeysFile .ssh/authorized_keys
+
+# Hardening
+X11Forwarding no
+AllowTcpForwarding no
+PrintMotd no
+
+# SFTP
+Subsystem sftp /usr/lib/openssh/sftp-server
+
+# Keep connections alive
+ClientAliveInterval 120
+ClientAliveCountMax 3

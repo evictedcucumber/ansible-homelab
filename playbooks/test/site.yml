@@ -1,0 +1,5 @@
+---
+- name: Configure tcyclops Server
+  hosts: tcyclops
+  gather_facts: false
+  roles: [harden_sshd]
