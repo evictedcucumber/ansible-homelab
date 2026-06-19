@@ -3,6 +3,10 @@
   hosts: tcyclops
   gather_facts: false
   roles: [proxmox]
+- name: Setup Nala
+  hosts: tcyclops
+  gather_facts: false
+  roles: [nala]
 - name: Harden Proxmox
   hosts: tcyclops
   gather_facts: false

@@ -1,5 +1,3 @@
 ---
-- name: Upgrade Proxmox System
-  ansible.builtin.import_tasks: upgrade.yml
 - name: Remove No-Subscription Popup
   ansible.builtin.import_tasks: no_sub_popup.yml

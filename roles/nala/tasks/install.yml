@@ -1,0 +1,5 @@
+---
+- name: Ensure `nala` is Installed
+  ansible.builtin.package:
+    name: nala
+    state: present
