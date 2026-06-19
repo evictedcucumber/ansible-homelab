@@ -1,0 +1,3 @@
+---
+- name: Harden `sshd` Service
+  ansible.builtin.include_tasks: sshd.yml

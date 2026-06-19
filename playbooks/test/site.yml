@@ -1,5 +1,9 @@
 ---
-- name: Configure tcyclops Server
+- name: Configure Proxmox
   hosts: tcyclops
   gather_facts: false
-  roles: [harden_sshd]
+  roles: [proxmox]
+- name: Harden Proxmox
+  hosts: tcyclops
+  gather_facts: false
+  roles: [hardening]

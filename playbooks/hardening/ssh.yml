@@ -1,4 +1,0 @@
----
-- name: Harden SSHD
-  gather_facts: false
-  roles: [harden_sshd]
