@@ -1,0 +1,4 @@
+---
+- name: Upgrade Debian System
+  ansible.builtin.command:
+    cmd: nala full-upgrade -y
