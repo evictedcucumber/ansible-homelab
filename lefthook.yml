@@ -1,0 +1,6 @@
+---
+pre-commit:
+  commands:
+    validate-ansible:
+      glob: '**/*.yml'
+      run: ansible-config validate
