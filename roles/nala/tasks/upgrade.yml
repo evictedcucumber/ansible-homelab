@@ -1,4 +1,0 @@
----
-- name: '`nala` Full System Upgrade'
-  ansible.builtin.command:
-    cmd: nala full-upgrade -y

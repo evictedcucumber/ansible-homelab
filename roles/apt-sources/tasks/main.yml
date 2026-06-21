@@ -1,0 +1,25 @@
+---
+- name: Copy `ceph.sources` to `/etc/apt/sources.list.d/ceph.sources`'
+  ansible.builtin.copy:
+    src: ceph.sources
+    dest: /etc/apt/sources.list.d/ceph.sources
+    owner: root
+    group: root
+    mode: '0755'
+    backup: true
+- name: Copy `debian.sources` to `/etc/apt/sources.list.d/debian.sources`'
+  ansible.builtin.copy:
+    src: debian.sources
+    dest: /etc/apt/sources.list.d/debian.sources
+    owner: root
+    group: root
+    mode: '0755'
+    backup: true
+- name: Copy `proxmox.sources` to `/etc/apt/sources.list.d/proxmox.sources`'
+  ansible.builtin.copy:
+    src: proxmox.sources
+    dest: /etc/apt/sources.list.d/proxmox.sources
+    owner: root
+    group: root
+    mode: '0755'
+    backup: true

@@ -1,0 +1,37 @@
+---
+- name: Bootstrap Server SSH Authorized Keys
+  hosts: proxmox
+  gather_facts: false
+  vars:
+    ansible_ssh_private_key_file:
+  tasks:
+    - name: Ensure Public Key in Authorized Keys
+      ansible.posix.authorized_key:
+        user: '{{ ansible_user }}'
+        key: "{{ lookup('file', ansible_ssh_public_key_file) }}"
+        state: present
+- name: SSH Hardening
+  hosts: proxmox
+  tasks:
+    - name: Harden `sshd`
+      ansible.builtin.import_role:
+        name: hardening
+        tasks_from: sshd
+- name: Configure Apt Sources
+  hosts: tcyclops
+  gather_facts: false
+  roles: [apt-sources]
+- name: Update System
+  hosts: tcyclops
+  gather_facts: false
+  tasks:
+    - name: Perform `apt` Full Upgrade
+      ansible.builtin.apt:
+        autoclean: true
+        autoremove: true
+        clean: true
+        purge: true
+        update_cache: true
+        upgrade: full
+    - name: Reboot System
+      ansible.builtin.reboot:

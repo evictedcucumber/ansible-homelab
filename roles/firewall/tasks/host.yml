@@ -1,0 +1,9 @@
+---
+- name: Write `host.fw` into pmxcfs
+  ansible.builtin.include_role:
+    name: pmxcfs
+    tasks_from: write.yml
+  vars:
+    pmxcfs_write_src: host.fw
+    pmxcfs_write_dest: '{{ firewall_node_dir }}/host.fw'
+    pmxcfs_write_notify: Restart `proxmox-firewall` Service

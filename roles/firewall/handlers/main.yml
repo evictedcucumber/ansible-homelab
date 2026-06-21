@@ -1,0 +1,10 @@
+---
+- name: Start `proxmox-firewall` Service
+  ansible.builtin.service:
+    name: proxmox-firewall
+    state: started
+    enabled: true
+- name: Restart `proxmox-firewall` Service
+  ansible.builtin.service:
+    name: proxmox-firewall
+    state: restarted

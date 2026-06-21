@@ -1,7 +1,0 @@
----
-- name: Install `nala` Package
-  ansible.builtin.import_tasks: install.yml
-- name: Fetch `nala` Repositories
-  ansible.builtin.import_tasks: fetch.yml
-- name: '`nala` Full System Upgrade'
-  ansible.builtin.import_tasks: upgrade.yml

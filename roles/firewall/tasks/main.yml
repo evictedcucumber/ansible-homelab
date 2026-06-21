@@ -1,0 +1,7 @@
+---
+- name: Ensure `proxmox-firewall` is Installed
+  ansible.builtin.import_tasks: install.yml
+- name: Ensure Cluster Rules
+  ansible.builtin.import_tasks: datacentre.yml
+- name: Ensure Node Rules
+  ansible.builtin.import_tasks: host.yml

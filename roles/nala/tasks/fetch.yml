@@ -1,9 +1,0 @@
----
-- name: Check if `nala` Fetch is Required
-  ansible.builtin.stat:
-    path: /etc/apt/sources.list.d/fetch.sources
-  register: nala_fetch_check
-- name: Fetch `nala` Repositories
-  ansible.builtin.command:
-    cmd: nala fetch --auto
-  when: nala_fetch_check.stat.exists

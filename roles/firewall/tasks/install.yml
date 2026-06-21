@@ -1,0 +1,6 @@
+---
+- name: Ensure `proxmox-firewall` is Installed
+  ansible.builtin.package:
+    name: proxmox-firewall
+    state: present
+  notify: Start `proxmox-firewall` Service
