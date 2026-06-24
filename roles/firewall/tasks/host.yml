@@ -1,4 +1,14 @@
 ---
+- name: Ensure Exists {{ firewall_node_dir }}
+  ansible.builtin.stat:
+    path: '{{ firewall_node_dir }}'
+  register: firewall_etc_node_dir
+- name: Create Directory {{ firewall_node_dir }}
+  ansible.builtin.file:
+    path: '{{ firewall_node_dir }}'
+    state: directory
+    mode: '0600'
+  when: not firewall_etc_node_dir.stat.exists
 - name: Write `host.fw` into pmxcfs
   ansible.builtin.include_role:
     name: pmxcfs

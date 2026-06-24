@@ -1,9 +1,9 @@
 ---
 - name: Configure Proxmox
-  hosts: tcyclops
+  hosts: proxmox
   gather_facts: false
   roles: [proxmox]
 - name: Configure Firewall
-  hosts: tcyclops
+  hosts: proxmox
   gather_facts: false
   roles: [firewall]

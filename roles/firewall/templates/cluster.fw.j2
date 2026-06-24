@@ -4,7 +4,9 @@ policy_in: DROP
 policy_out: DROP
 
 [IPSET management]
-192.168.1.29
+{% for item in firewall_management_ipset %}
+{{ item }}
+{% endfor %}
 
 [RULES]
 IN SSH(ACCEPT) -source +management

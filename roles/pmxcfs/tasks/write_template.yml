@@ -1,0 +1,22 @@
+---
+- name: Copy Template {{ '`' ~ pmxcfs_write_src ~ '` to `' ~ pmxcfs_write_dest ~ '`' }}
+  ansible.builtin.template:
+    src: '{{ pmxcfs_write_src }}'
+    dest: /tmp/{{ pmxcfs_write_src | basename }}.staged
+    mode: '0600'
+- name: Check Staged File Checksum
+  ansible.builtin.stat:
+    path: /tmp/{{ pmxcfs_write_src | basename }}.staged
+  register: pmxcfs_staged_file
+- name: Check Current File Checksum
+  ansible.builtin.stat:
+    path: '{{ pmxcfs_write_dest }}'
+  register: pmxcfs_current_file
+- name: Write Staged File into pmxcfs
+  ansible.builtin.command:
+    cmd: cp /tmp/{{ pmxcfs_write_src | basename }}.staged {{ pmxcfs_write_dest }}
+  when: >
+    not pmxcfs_current_file.stat.exists or
+    pmxcfs_staged_file.stat.checksum != pmxcfs_current_file.stat.checksum
+  changed_when: true
+  notify: '{{ pmxcfs_write_notify | default(omit) }}'

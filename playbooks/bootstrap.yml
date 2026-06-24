@@ -12,11 +12,7 @@
         state: present
 - name: SSH Hardening
   hosts: proxmox
-  tasks:
-    - name: Harden `sshd`
-      ansible.builtin.import_role:
-        name: hardening
-        tasks_from: sshd
+  roles: [sshd]
 - name: Configure Apt Sources
   hosts: proxmox
   gather_facts: false

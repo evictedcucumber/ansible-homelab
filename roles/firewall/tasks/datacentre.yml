@@ -12,8 +12,8 @@
 - name: Write `cluster.fw` into pmxcfs
   ansible.builtin.include_role:
     name: pmxcfs
-    tasks_from: write.yml
+    tasks_from: write_template.yml
   vars:
-    pmxcfs_write_src: cluster.fw
+    pmxcfs_write_src: cluster.fw.j2
     pmxcfs_write_dest: '{{ firewall_root_dir }}/cluster.fw'
     pmxcfs_write_notify: Restart `proxmox-firewall` Service
