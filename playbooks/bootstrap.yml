@@ -18,11 +18,11 @@
         name: hardening
         tasks_from: sshd
 - name: Configure Apt Sources
-  hosts: tcyclops
+  hosts: proxmox
   gather_facts: false
-  roles: [apt-sources]
+  roles: [apt]
 - name: Update System
-  hosts: tcyclops
+  hosts: proxmox
   gather_facts: false
   tasks:
     - name: Perform `apt` Full Upgrade

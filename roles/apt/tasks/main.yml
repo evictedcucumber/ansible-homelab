@@ -1,4 +1,15 @@
 ---
+- name: Find All Files Inside `/etc/apt/sources.list.d/`
+  ansible.builtin.find:
+    paths: /etc/apt/sources.list.d
+    hidden: true
+    file_type: any
+  register: apt_dir_contents
+- name: Remove all contents
+  ansible.builtin.file:
+    path: '{{ item.path }}'
+    state: absent
+  loop: '{{ apt_dir_contents.files }}'
 - name: Copy `ceph.sources` to `/etc/apt/sources.list.d/ceph.sources`'
   ansible.builtin.copy:
     src: ceph.sources
