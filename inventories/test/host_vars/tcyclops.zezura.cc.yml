@@ -1,6 +1,4 @@
 ---
 ansible_ssh_private_key_file: ~/.ssh/tcyclops
 ansible_ssh_public_key_file: ~/.ssh/tcyclops.pub
-firewall_management_ipset:
-  - '192.168.2.1 # Ansbile Control Node (prawnsuit (Windows))'
-  - '172.16.0.0/12 # Ansible Control Node (snowfox (NixOS WSL))'
+firewall_management_ipset: [192.168.2.1, 172.16.0.0/12]
