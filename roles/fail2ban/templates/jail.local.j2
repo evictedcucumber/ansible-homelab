@@ -1,0 +1,28 @@
+#jinja2: trim_blocks: True, lstrip_blocks: True
+# {{ ansible_managed }}
+# Managed by the fail2ban Ansible role. Do not edit by hand.
+
+[DEFAULT]
+bantime = 1h
+findtime = 1m
+maxretry = 5
+banaction = iptables-multiport
+backend = systemd
+ignoreip = {{ fail2ban_ignore_ip | join(' ') }}
+
+[sshd]
+enabled = true
+port = ssh
+findtime = 1m
+maxretry = 5
+bantime = 1h
+
+[proxmox]
+enabled = true
+port = 8006
+filter = proxmox
+backend = systemd
+journalmatch = _SYSTEMD_UNIT=pvedaemon.service
+findtime = 10m
+maxretry = 3
+bantime = 1h

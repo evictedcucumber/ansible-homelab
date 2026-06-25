@@ -2,3 +2,4 @@
 ansible_ssh_private_key_file: ~/.ssh/tcyclops
 ansible_ssh_public_key_file: ~/.ssh/tcyclops.pub
 firewall_management_ipset: [192.168.2.1, 172.16.0.0/12]
+fail2ban_ignore_ip: [127.0.0.1/8, 192.168.2.1, 172.168.0.0/12]

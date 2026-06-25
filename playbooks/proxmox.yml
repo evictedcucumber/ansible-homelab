@@ -7,3 +7,7 @@
   hosts: proxmox
   gather_facts: false
   roles: [firewall]
+- name: Configure Fail2Ban
+  hosts: proxmox
+  gather_facts: false
+  roles: [fail2ban]

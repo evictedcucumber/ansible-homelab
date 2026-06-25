@@ -1,0 +1,26 @@
+---
+- name: Ensure `fail2ban` is Installed
+  ansible.builtin.package:
+    name: fail2ban
+    state: present
+- name: Ensure `fail2ban` Jail Configuration
+  ansible.builtin.template:
+    src: jail.local.j2
+    dest: /etc/fail2ban/jail.local
+    owner: root
+    group: root
+    mode: '0644'
+  notify: Restart `fail2ban` Service
+- name: Ensure `filter.d/proxmox.conf` Proxmox Filter
+  ansible.builtin.copy:
+    src: filter.d/proxmox.conf
+    dest: /etc/fail2ban/filter.d/proxmox.conf
+    owner: root
+    group: root
+    mode: '0644'
+  notify: Restart `fail2ban` Service
+- name: Start `fail2ban` Service
+  ansible.builtin.service:
+    name: fail2ban
+    state: started
+    enabled: true
