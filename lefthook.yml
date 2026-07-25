@@ -2,5 +2,5 @@
 pre-commit:
   commands:
     validate-ansible:
-      glob: "**/*.yml"
-      run: ansible-config validate
+      glob: '**/*.yml'
+      run: ansible-config validate -t all
