@@ -1,0 +1,9 @@
+---
+- name: Perform `apt` Full Upgrade
+  ansible.builtin.apt:
+    autoclean: true
+    autoremove: true
+    clean: true
+    purge: true
+    update_cache: true
+    upgrade: full
