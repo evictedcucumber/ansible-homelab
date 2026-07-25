@@ -19,7 +19,14 @@
     in {
       devShells.default = pkgs.mkShell {
         name = "ansible-homelab";
-        packages = with pkgs; [python3 ansible ansible-lint ansible-language-server lefthook];
+        packages = with pkgs; [
+          ansible
+          ansible-language-server
+          ansible-lint
+          lefthook
+          proxmox-auto-install-assistant
+          python3
+        ];
       };
     });
 }
