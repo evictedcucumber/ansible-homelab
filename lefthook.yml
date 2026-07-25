@@ -4,3 +4,6 @@ pre-commit:
     validate-ansible:
       glob: '**/*.yml'
       run: ansible-config validate -t all
+    lefthook-validate:
+      glob: lefthook.yml
+      run: lefthook validate
