@@ -1,0 +1,28 @@
+---
+- name: Find All Files Inside `/etc/apt/sources.list.d/`
+  ansible.builtin.find:
+    paths: /etc/apt/sources.list.d
+    hidden: true
+    file_type: any
+  register: apt_dir_contents
+- name: Remove all contents
+  ansible.builtin.file:
+    path: '{{ item.path }}'
+    state: absent
+  loop: '{{ apt_dir_contents.files }}'
+- name: Copy `debian.sources` to `/etc/apt/sources.list.d/debian.sources`'
+  ansible.builtin.copy:
+    src: debian.sources
+    dest: /etc/apt/sources.list.d/debian.sources
+    owner: root
+    group: root
+    mode: '0755'
+    backup: true
+- name: Copy `proxmox.sources` to `/etc/apt/sources.list.d/proxmox.sources`'
+  ansible.builtin.copy:
+    src: proxmox.sources
+    dest: /etc/apt/sources.list.d/proxmox.sources
+    owner: root
+    group: root
+    mode: '0755'
+    backup: true
